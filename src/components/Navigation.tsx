@@ -19,8 +19,7 @@ const Navigation = () => {
     { name: 'Beranda', href: '#home' },
     { name: 'Tentang', href: '#about' },
     { name: 'Kegiatan', href: '#activities' },
-    { name: 'Anggota', href: '#members' },
-    { name: 'Kontak', href: '#contact' }
+    { name: 'Anggota', href: '#members' }
   ];
 
   const scrollToSection = (href: string) => {
@@ -62,12 +61,6 @@ const Navigation = () => {
                 {link.name}
               </button>
             ))}
-            <Button 
-              className="bg-coral hover:bg-coral-dark"
-              onClick={() => scrollToSection('#contact')}
-            >
-              Bergabung
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -92,14 +85,6 @@ const Navigation = () => {
                   {link.name}
                 </button>
               ))}
-              <div className="px-4 pt-4 border-t">
-                <Button 
-                  className="w-full bg-coral hover:bg-coral-dark"
-                  onClick={() => scrollToSection('#contact')}
-                >
-                  Bergabung
-                </Button>
-              </div>
             </div>
           </div>
         )}

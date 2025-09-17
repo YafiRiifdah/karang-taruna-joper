@@ -3,7 +3,6 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ActivitiesSection from '@/components/ActivitiesSection';
 import MembersSection from '@/components/MembersSection';
-import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -25,10 +24,6 @@ const Index = () => {
       
       <section id="members">
         <MembersSection />
-      </section>
-      
-      <section id="contact">
-        <ContactSection />
       </section>
       
       <Footer />

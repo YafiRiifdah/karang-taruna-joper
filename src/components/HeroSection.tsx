@@ -29,11 +29,7 @@ const HeroSection = () => {
             produktif, dan berkontribusi untuk kemajuan masyarakat.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="btn-hero">
-              <Users className="mr-2 h-5 w-5" />
-              Bergabung Dengan Kami
-            </Button>
+          <div className="flex justify-center items-center mb-12">
             <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black">
               Lihat Kegiatan
             </Button>
@@ -57,15 +53,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-        <div className="flex flex-col items-center">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
-          </div>
-          <span className="text-sm mt-2">Scroll</span>
-        </div>
-      </div>
     </section>
   );
 };

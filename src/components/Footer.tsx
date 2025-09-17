@@ -5,8 +5,7 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Tentang Kami', href: '#about' },
     { name: 'Program Kegiatan', href: '#activities' },
-    { name: 'Struktur Organisasi', href: '#members' },
-    { name: 'Hubungi Kami', href: '#contact' }
+    { name: 'Struktur Organisasi', href: '#members' }
   ];
 
   const programs = [

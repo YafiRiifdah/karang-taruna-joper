@@ -137,17 +137,6 @@ const ActivitiesSection = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center bg-gradient-to-r from-coral to-accent rounded-2xl p-8 md:p-12 text-white">
-          <h3 className="text-3xl font-bold mb-4">Ingin Bergabung Dalam Kegiatan?</h3>
-          <p className="text-xl mb-8 text-white/90">
-            Ikuti berbagai program menarik kami dan berkontribusi untuk kemajuan masyarakat.
-          </p>
-          <Button size="lg" variant="secondary" className="bg-white text-coral hover:bg-gray-100">
-            <Users className="mr-2 h-5 w-5" />
-            Hubungi Kami Sekarang
-          </Button>
-        </div>
       </div>
     </section>
   );
