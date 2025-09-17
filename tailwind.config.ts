@@ -57,6 +57,20 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom colors from design system
+        coral: {
+          DEFAULT: "hsl(var(--coral))",
+          light: "hsl(var(--coral-light))",
+          dark: "hsl(var(--coral-dark))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          light: "hsl(var(--gold-light))",
+        },
+        "warm-gray": {
+          DEFAULT: "hsl(var(--warm-gray))",
+          dark: "hsl(var(--warm-gray-dark))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
