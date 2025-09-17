@@ -30,7 +30,7 @@ const HeroSection = () => {
           </p>
 
           <div className="flex justify-center items-center mb-12">
-            <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black">
+            <Button size="lg" className="bg-white/20 backdrop-blur-sm text-white border-2 border-white hover:bg-white hover:text-coral transition-all duration-300">
               Lihat Kegiatan
             </Button>
           </div>
