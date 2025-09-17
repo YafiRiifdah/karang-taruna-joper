@@ -4,13 +4,6 @@ import { Users, Heart, Star } from 'lucide-react';
 import heroImage from '@/assets/hero-karang-taruna.jpg';
 
 const HeroSection = () => {
-  const scrollToActivities = () => {
-    const element = document.querySelector('#activities');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -27,9 +20,8 @@ const HeroSection = () => {
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         <div className="animate-fade-up">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="animate-typing block text-gradient">
-              Karang Taruna Mojo Gubeng
-            </span>
+            Karang Taruna
+            <span className="block text-gradient">Mojo Gubeng</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
@@ -38,11 +30,7 @@ const HeroSection = () => {
           </p>
 
           <div className="flex justify-center items-center mb-12">
-            <Button 
-              size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white border-2 border-orange-400 hover:border-orange-500 animate-bounce-button transition-all duration-300"
-              onClick={scrollToActivities}
-            >
+            <Button size="lg" className="bg-white/20 backdrop-blur-sm text-white border-2 border-white hover:bg-white hover:text-coral transition-all duration-300">
               Lihat Kegiatan
             </Button>
           </div>

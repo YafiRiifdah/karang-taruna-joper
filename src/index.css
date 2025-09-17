@@ -152,7 +152,7 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-/* Custom animations */
+  /* Custom animations */
   .animate-fade-up {
     animation: fadeUp 0.6s ease-out forwards;
   }
@@ -163,19 +163,6 @@ All colors MUST be HSL.
 
   .animate-slide-in {
     animation: slideIn 0.8s ease-out forwards;
-  }
-
-  .animate-bounce-button {
-    animation: bounceButton 2s ease-in-out infinite;
-  }
-
-  .animate-typing {
-    overflow: hidden;
-    border-right: .15em solid hsl(var(--coral));
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
   }
 }
 
@@ -210,26 +197,4 @@ All colors MUST be HSL.
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-@keyframes bounceButton {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: hsl(var(--coral)); }
 }
