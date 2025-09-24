@@ -5,7 +5,7 @@ import heroImage from '@/assets/hero-karang-taruna.jpg';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -19,9 +19,9 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         <div className="animate-fade-up">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-relaxed">
             Karang Taruna
-            <span className="block text-gradient">Mojo Gubeng</span>
+            <span className="block text-gradient leading-relaxed pb-2">Mojo Gubeng</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">

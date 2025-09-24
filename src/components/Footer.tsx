@@ -108,12 +108,6 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-            
-            <div className="flex items-center text-white/80 text-sm">
-              <span>Dibuat dengan</span>
-              <Heart className="w-4 h-4 text-coral mx-1" />
-              <span>untuk masyarakat © 2024</span>
-            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { Menu, X, Users } from 'lucide-react';
 
 const Navigation = () => {
@@ -19,23 +18,32 @@ const Navigation = () => {
     { name: 'Beranda', href: '#home' },
     { name: 'Tentang', href: '#about' },
     { name: 'Kegiatan', href: '#activities' },
-    { name: 'Anggota', href: '#members' }
+    { name: 'Anggota', href: '#members' },
+    { name: 'Berita', href: '#news' },
+    { name: 'Lokasi', href: '#location' }
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+    const element = document.querySelector(href) as HTMLElement | null;
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 50;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
     setIsOpen(false);
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -43,13 +51,17 @@ const Navigation = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-coral to-accent rounded-full flex items-center justify-center">
               <Users className="w-6 h-6 text-white" />
             </div>
-            <div className={`font-bold text-xl ${isScrolled ? 'text-foreground' : 'text-white'}`}>
+            <div
+              className={`font-bold text-xl ${
+                isScrolled ? 'text-foreground' : 'text-white'
+              }`}
+            >
               Karang Taruna
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6 mr-4">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <button
                 key={link.name}
@@ -65,7 +77,9 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden p-2 ${isScrolled ? 'text-foreground' : 'text-white'}`}
+            className={`md:hidden p-2 ${
+              isScrolled ? 'text-foreground' : 'text-white'
+            }`}
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
