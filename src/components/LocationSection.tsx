@@ -1,5 +1,5 @@
 // src/components/LocationSection.tsx
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import {
   MapContainer as LeafletMap,
   TileLayer,
@@ -21,24 +21,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
-
-// Komponen MapController untuk animasi
-function MapController({ center }: { center: LatLngExpression }) {
-  const mapRef = useRef<L.Map | null>(null);
-
-  useEffect(() => {
-    if (mapRef.current) {
-      setTimeout(() => {
-        mapRef.current?.flyTo(center, 16, {
-          duration: 2,
-          easeLinearity: 0.1,
-        });
-      }, 500);
-    }
-  }, [center]);
-
-  return null;
-}
 
 export default function LocationSection(): JSX.Element {
   const contactInfo = [
@@ -72,7 +54,10 @@ export default function LocationSection(): JSX.Element {
   const { BaseLayer } = LayersControl;
 
   return (
-    <section id="location" className="section-padding bg-background relative overflow-hidden">
+    <section
+      id="location"
+      className="section-padding bg-background relative overflow-hidden"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-72 h-72 bg-coral rounded-full blur-3xl"></div>
@@ -89,103 +74,113 @@ export default function LocationSection(): JSX.Element {
             Lokasi & Kontak
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Bergabunglah dengan kami untuk membangun masyarakat yang lebih baik. 
+            Bergabunglah dengan kami untuk membangun masyarakat yang lebih baik.
             Kami siap berkolaborasi dan berdiskusi dengan Anda.
           </p>
         </div>
 
-        {/* Contact Info */}
-        <div className="max-w-4xl mx-auto mb-12 animate-fade-up">
-          <h3 className="text-2xl font-bold text-foreground text-center mb-8">
-            Informasi Kontak
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {contactInfo.map((info, index) => (
-              <Card key={index} className="card-hover hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-coral to-coral-light rounded-lg flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground mb-2">{info.title}</h4>
-                      <p className="text-muted-foreground leading-relaxed">{info.content}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Map Section */}
-        <div className="animate-fade-up">
-          <h3 className="text-2xl font-bold text-foreground text-center mb-8">
-            Peta Lokasi
-          </h3>
-
-          <Card className="overflow-hidden max-w-4xl mx-auto">
-            <CardContent className="p-0">
-              <div className="h-96 w-full">
-                <LeafletMap center={position} zoom={15} scrollWheelZoom={false} className="h-96 w-full rounded-lg">
-                  <LayersControl position="topright">
-                    {/* Street Mode */}
-                    <BaseLayer checked name="Street">
-                      <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                      />
-                    </BaseLayer>
-
-                    {/* Satellite Mode */}
-                    <BaseLayer name="Satellite">
-                      <TileLayer
-                        url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                        attribution="Tiles © Esri"
-                      />
-                    </BaseLayer>
-
-                    {/* Dark Mode */}
-                    <BaseLayer name="Dark Mode">
-                      <TileLayer
-                        url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                        attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-                      />
-                    </BaseLayer>
-
-                    {/* Light Mode */}
-                    <BaseLayer name="Light Mode">
-                      <TileLayer
-                        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-                        attribution="&copy; OpenStreetMap contributors"
-                      />
-                    </BaseLayer>
-                  </LayersControl>
-
-                  <Marker position={position}>
-                    <Popup>
-                      <div className="p-2">
-                        <h3 className="font-bold">Karang Taruna Mojo Gubeng</h3>
-                        <p>Sekretariat Karang Taruna</p>
+        {/* Grid 2 kolom: Kontak kiri, Map kanan */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          {/* Contact Info */}
+          <div className="animate-fade-up">
+            <h3 className="text-2xl font-bold text-foreground mb-8">
+              Informasi Kontak
+            </h3>
+            <div className="grid grid-cols-1 gap-6">
+              {contactInfo.map((info, index) => (
+                <Card
+                  key={index}
+                  className="card-hover hover:shadow-lg transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-coral to-coral-light rounded-lg flex items-center justify-center flex-shrink-0">
+                        <info.icon className="w-6 h-6 text-white" />
                       </div>
-                    </Popup>
-                  </Marker>
-                </LeafletMap>
-              </div>
-            </CardContent>
-          </Card>
+                      <div>
+                        <h4 className="font-semibold text-foreground mb-2">
+                          {info.title}
+                        </h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {info.content}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
 
-          <div className="mt-6 flex gap-4 justify-center">
-            <Button
-              variant="outline"
-              className="border-coral text-coral hover:bg-coral hover:text-white"
-              onClick={() =>
-                window.open("https://maps.google.com/?q=-7.2756,112.7379", "_blank")
-              }
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Buka di Google Maps
-            </Button>
+          {/* Map Section */}
+          <div className="animate-fade-up">
+            <h3 className="text-2xl font-bold text-foreground mb-8 text-center md:text-left">
+              Peta Lokasi
+            </h3>
+
+            <Card className="overflow-hidden w-full">
+              <CardContent className="p-0">
+                <div className="h-96 w-full">
+                  <LeafletMap
+                    center={position}
+                    zoom={15}
+                    scrollWheelZoom={false}
+                    className="h-96 w-full rounded-lg"
+                  >
+                    <LayersControl position="topright">
+                      <BaseLayer checked name="Street">
+                        <TileLayer
+                          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        />
+                      </BaseLayer>
+                      <BaseLayer name="Satellite">
+                        <TileLayer
+                          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                          attribution="Tiles © Esri"
+                        />
+                      </BaseLayer>
+                      <BaseLayer name="Dark Mode">
+                        <TileLayer
+                          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                          attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+                        />
+                      </BaseLayer>
+                      <BaseLayer name="Light Mode">
+                        <TileLayer
+                          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                          attribution="&copy; OpenStreetMap contributors"
+                        />
+                      </BaseLayer>
+                    </LayersControl>
+
+                    <Marker position={position}>
+                      <Popup>
+                        <div className="p-2">
+                          <h3 className="font-bold">
+                            Karang Taruna Mojo Gubeng
+                          </h3>
+                          <p>Sekretariat Karang Taruna</p>
+                        </div>
+                      </Popup>
+                    </Marker>
+                  </LeafletMap>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="mt-6 flex gap-4 justify-center md:justify-start">
+              <Button
+                variant="outline"
+                className="border-coral text-coral hover:bg-coral hover:text-white"
+                onClick={() =>
+                  window.open("https://maps.google.com/?q=-7.2756,112.7379", "_blank")
+                }
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Buka di Google Maps
+              </Button>
+            </div>
           </div>
         </div>
       </div>
