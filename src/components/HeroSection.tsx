@@ -1,15 +1,28 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Users, Heart, Star } from 'lucide-react';
 import heroImage from '@/assets/hero-karang-taruna.jpg';
 
+type HeroImageSource = 'asset' | 'url';
+
+const heroImageConfig = {
+  source: 'asset' as HeroImageSource,
+  asset: heroImage,
+  url: 'https://example.com/hero-image.jpg',
+};
+
+// Ganti source ke 'url' untuk memakai gambar dari URL.
+// Ganti source ke 'asset' untuk memakai gambar lokal dari src/assets.
+
 const HeroSection = () => {
+  const heroImageSrc =
+    heroImageConfig.source === 'url' ? heroImageConfig.url : heroImageConfig.asset;
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={heroImage} 
+          src={heroImageSrc} 
           alt="Karang Taruna Hero" 
           className="w-full h-full object-cover"
         />
